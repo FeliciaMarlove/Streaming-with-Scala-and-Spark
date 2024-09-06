@@ -12,7 +12,7 @@ object Detector {
       .master("local")
       .appName("Fraud Detector")
       .config("spark.driver.memory", "2g")
-      //.enableHiveSupport
+      .enableHiveSupport
       .getOrCreate()
 
     import spark.implicits._
@@ -46,10 +46,11 @@ object Detector {
         collect_set($"Description").as("UniqueTransactionDescriptions"))
       .coalesce(5)
       .write.mode(SaveMode.Overwrite).json("Output/finances-small-account-details")
+
   }
 
   implicit class DataFrameHelper(df: DataFrame) {
-    import scala.util.Try //org.apache.spark.sql.AnalysisException
+    import scala.util.Try
     def hasColumn(columnName: String) = Try(df(columnName)).isSuccess
   }
 }
