@@ -30,8 +30,13 @@ object Detector {
     }
 
     financesDF
-      .select(concat($"Account.FirstName", lit(" "), $"Account.LastName").as("FullName"),
+      // concat word separator => first argument = separator
+      .select(concat_ws(" ", $"Account.FirstName", $"Account.LastName").as("FullName"),
+      //.select(concat($"Account.FirstName", lit(" "), $"Account.LastName").as("FullName"),
         $"Account.Number".as("AccountNumber"))
+      // dropDuplicates can also take columns as parameter
+      // dropDuplicates and distinct don't work the same with streaming data!
+      //.dropDuplicates()
       .distinct
       .coalesce(5)
       .write.mode(SaveMode.Overwrite).json("Output/finances-small-accounts")
