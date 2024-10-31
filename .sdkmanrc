@@ -1,0 +1,6 @@
+# Enable auto-env through the sdkman_auto_env config
+# Add key=value pairs of SDKs to use below
+java=8.0.432-amzn
+
+# sdk env init => create this file
+# sdk env => activate the environment (will prompt for installation of the required version if not available locally)
