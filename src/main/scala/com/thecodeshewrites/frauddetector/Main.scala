@@ -6,8 +6,8 @@ import org.apache.spark.sql.functions._
 
 // object creates a singleton (diff from class) => holds static val/var and methods
 // there are others uses (ex companion object)
-object Detector {
-  def main(args: Array[String]) {
+object Main {
+  def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder
       .master("local")
       .appName("Fraud Detector")
@@ -73,6 +73,6 @@ object Detector {
 
   implicit class DataFrameHelper(df: DataFrame) {
     import scala.util.Try
-    def hasColumn(columnName: String) = Try(df(columnName)).isSuccess
+    def hasColumn(columnName: String): Boolean = Try(df(columnName)).isSuccess
   }
 }

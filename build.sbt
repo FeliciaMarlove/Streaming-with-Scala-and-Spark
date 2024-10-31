@@ -4,8 +4,7 @@ ThisBuild / scalaVersion := "2.13.10"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "scala-spark-streaming",
-    idePackagePrefix := Some("com.thecodeshewrites.frauddetector")
+    name := "scala-spark-streaming"
   )
 
 val sparkVersion = "3.5.0"

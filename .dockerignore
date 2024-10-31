@@ -1,0 +1,3 @@
+# List files to ignore when creating the Docker image
+# => use when targetting a high level directory to create an exclusion list
+# instead of listing the files to copy
